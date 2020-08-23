@@ -68,3 +68,9 @@ Now, in `.babelrc` simply add the entry `plugins` with the required plugin:
 ```
 Now, we may "?." to our hearts desire.
 
+## Adding React into the mix
+
+Babel can also handle React.js code.
+A good preset for this is `@babel/preset-react`.
+
+In order to use react, you will also of course have to `npm install` all relevant React packages.
