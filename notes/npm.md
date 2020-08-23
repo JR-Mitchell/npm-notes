@@ -1,3 +1,5 @@
+# npm
+
 ## Intro
 
 NPM (Node Package Manager) allows you to easily install JavaScript packages and use them in projects.
@@ -44,3 +46,14 @@ Then, if you later need to run the product but don't need any of the development
 npm install --production
 ```
 installs from `package.json` but ignores everything in `devDependencies`.
+
+## Uninstalling packages
+
+An easy (but potentially dangerous) trick to uninstall all installed packages before removing a directory is
+```
+cd node_modules
+npm uninstall *
+```
+
+Be aware that, if you have a package both uninstalled globally and in the current package, this may uninstall it globally.
+However, in most situations this should not be the case.
