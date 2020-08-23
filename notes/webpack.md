@@ -79,4 +79,18 @@ Modifying the npm script we defined earlier to:
 ```
 allows us to call `npm run build:pack` and pack both the javascript and HTML into the `dist` directory.
 
+Note that, by default, the HTML webpack plugin will add the packed script into the HTML body automatically, so you do not need a <script> tag for it in your input HTML, and changes to its output name or other parts of the stack flow should not lead to 404s.
 
+## Webpack dev server
+
+Webpack also comes with a handy tool that creates a hot development server.
+
+```
+npm install webpack-dev-server --save-dev
+```
+
+With this in place, we need only add the npm script:
+```
+    "dev:server": "webpack-dev-server --config wp.html_config.js --mode development"
+```
+and then run it, and a server will spawn at localhost:8080 which will automatically update whenever the source code is modified.
