@@ -1,0 +1,28 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "webpack demo files for npm-notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:pack": "webpack --config wp.html_config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneSlightWeirdo/npm-notes.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "OneSlightWeirdo",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/OneSlightWeirdo/npm-notes/issues"
+  },
+  "homepage": "https://github.com/OneSlightWeirdo/npm-notes#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
