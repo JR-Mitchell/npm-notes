@@ -1,0 +1,35 @@
+{
+  "name": "babel-webpack-demo",
+  "version": "1.0.0",
+  "description": "babel with webpack demo files for npm-notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:pack": "webpack --config wp.config.js",
+    "dev:server": "webpack-dev-server --config wp.config.js --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneSlightWeirdo/npm-notes.git"
+  },
+  "keywords": [
+    "webpack",
+    "babel"
+  ],
+  "author": "OneSlightWeirdo",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/OneSlightWeirdo/npm-notes/issues"
+  },
+  "homepage": "https://github.com/OneSlightWeirdo/npm-notes#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
