@@ -36,7 +36,7 @@ A config file (perhaps named `wp.config.js` or something similar) does two thing
 1. Creates an object containing any configuration options you wish to set
 2. Exports said object
 
-A minimal example of such a config (which may also be found [here](https://github.com/OneSlightWeirdo/npm-notes/tree/master/webpack-demo/wp.base_config.js) reads as:
+A minimal example of such a config (which may also be found [here](https://github.com/OneSlightWeirdo/npm-notes/blob/master/webpack-demo/wp.base_config.js) reads as:
 
 ```js
 const WebpackConfig = {
@@ -46,7 +46,7 @@ module.exports = WebpackConfig;
 ```
 
 However, we wish to set up the HTML Webpack plugin, and therefore will make a few modifications.
-A full config file with the following steps may be found [here](https://github.com/OneSlightWeirdo/npm-notes/tree/master/webpack-demo/wp.html_config.js).
+A full config file with the following steps may be found [here](https://github.com/OneSlightWeirdo/npm-notes/blob/master/webpack-demo/wp.html_config.js).
 
 First, we require the plugin (at the top of the file):
 ```js
