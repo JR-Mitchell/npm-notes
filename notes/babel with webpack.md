@@ -115,4 +115,13 @@ This can simply be a blank json object:
 ```
 
 Now, you may use TypeScript and it will compile fine.
+However, imports from other local TypeScript files will not be followed.
+
+In order to inform webpack that it should look for `.ts` and `.tsx` files, the following must be added to the Webpack Config file:
+```js
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    }
+```
+
 For any further modules you include, you may also have to `npm install --save-dev` the relevant `@types/` package. 
