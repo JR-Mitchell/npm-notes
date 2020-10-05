@@ -11,19 +11,23 @@ npm install webpack webpack-cli --save-dev
 
 ## Basic webpacking
 
+Consider you have some JavaScript files that you wish to bundle.
 By default, webpack will start at the entry point `src/index.js` and output to `dist/main.js`.
-This can be done manually by calling `npx webpack`, but it is more consistent to set up an npm script:
+Thus, you should ensure that there exists a `src` folder, inside which is an `index.js` which imports any other modules or scripts your JavaScript relies on.
+
+Then, the files may be packed by calling `npx webpack`, but it is more consistent to set up an npm script:
 ```
-    "build:pack": "webpack"
+    "build": "webpack"
 ```
-and then call `npm run build:pack`.
+and then call `npm run build`.
 
 If a `dist` file did not exist, one will be created.
 
 ## Packing HTML
 
 So far, this will pack your index.js file, and any other files or packages it imports.
-But what about our HTML?
+But what if we are building a site? What do we do about our HTML?
+
 You can install the HTML webpack plugin:
 ```
 npm install html-webpack-plugin --save-dev
@@ -59,25 +63,18 @@ Then, we set it up by modifying the `WebpackConfig` object.
 const WebpackConfig = {
     plugins: [
         new HTMLWebpackPlugin({
-            template: "src/html/index.html",
+            template: "src/index.html",
             filename: "index.html"
         })
     ]
 }
 ```
-Note that this presupposes that our "src" has a file for each filetype, even though we were previously entering at `src/index.js`.
-In order to make this consistent, a new directory `src/js` is created, `index.js` moved into it and the following item added to the WebpackConfig:
-
-```js
-    entry: "./src/js/index.js",
-```
-
-Now, this leaves us with one final thing to do - ensure that we're using this config file.
+This leaves us with one final thing to do - ensure that we're using this config file.
 Modifying the npm script we defined earlier to:
 ```
-    "build:pack": "webpack --config wp.html_config.js"
+    "build": "webpack --config wp.html_config.js"
 ```
-allows us to call `npm run build:pack` and pack both the javascript and HTML into the `dist` directory.
+allows us to call `npm run build` and pack both the javascript and HTML into the `dist` directory.
 
 Note that, by default, the HTML webpack plugin will add the packed script into the HTML body automatically, so you do not need a <script> tag for it in your input HTML, and changes to its output name or other parts of the stack flow should not lead to 404s.
 
@@ -91,6 +88,7 @@ npm install webpack-dev-server --save-dev
 
 With this in place, we need only add the npm script:
 ```
-    "dev:server": "webpack-dev-server --config wp.html_config.js --mode development"
+    "dev": "webpack-dev-server --config wp.html_config.js --mode development"
 ```
 and then run it, and a server will spawn at localhost:8080 which will automatically update whenever the source code is modified.
+See [npm scripts and arguments](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/npm%20arguments.md) for an in-detail on command arguments using this script as an example.
