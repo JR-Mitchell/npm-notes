@@ -5,7 +5,7 @@
   "main": "index.js",
   "config": {
     "port": "8080"
-  }
+  },
   "scripts": {
     "test": "echo \"No test specified yet. Check out later info on jest.\" && exit 1",
     "build": "webpack --config wp.config.js",
