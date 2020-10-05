@@ -59,7 +59,7 @@ $ npm install {package_name}
 ```
 and information about the installation will be automatically added into the `dependencies` section of the `package.json` file.
 
-If the package is a tool for development and not a package that will be included in the finalised JavaScript (e.g Babel, TypeScript, [Webpack](https://github.com/OneSlightWeirdo/npm-notes/blob/master/notes/webpack.md)), then you should instead install with
+If the package is a tool for development and not a package that will be included in the finalised JavaScript (e.g Babel, TypeScript, [Webpack](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/webpack.md)), then you should instead install with
 ```bash
 $ npm install {package_name} --save-dev
 ```

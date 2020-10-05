@@ -115,7 +115,7 @@ Here's a solution that uses bash logical conditions to give this behaviour:
 
 This does the following:
 
-1. Check if `$npm_config_port` is set (either this was called with `--port=` or `npm set config port` has been called
+1. Check if `$npm_config_port` is set (either this was called with `--port=` or `npm set config port` has been called)
 2. If it is, runs `webpack-dev-server` on this port
 3. If it isn't, calls this function again with `$npm-config-port = $npm-package-config-port`.
 

@@ -3,7 +3,7 @@
 ## Intro
 
 Babel is a JavaScript compiler which allows you to use not-yet-supported or even experimental JavaScript without fear of browser incompatibility, by compiling your new or even experimental JavaScript into a form that all browsers should be able to handle.
-Handily, Babel can happily work alongside [Webpack](https://github.com/OneSlightWeirdo/npm-notes/blob/master/notes/webpack.md) using the `babel-loader` library.
+Handily, Babel can happily work alongside [Webpack](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/webpack.md) using the `babel-loader` library.
 
 ```
 npm install @babel/core babel-loader --save-dev
