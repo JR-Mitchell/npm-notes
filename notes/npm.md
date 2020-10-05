@@ -94,6 +94,14 @@ webpack-dev-server --mode development --port
 
 (since the environmental variable has not been set and is thus empty), and thus will throw an error, as a value of `true` is not a valid port.
 
+This behaviour can be changed by setting a default value to `$npm_config_port` using the `npm config` command:
+
+```bash
+$ npm set config port 5000
+```
+
+**However, be aware** that this command sets the value of `$npm_config_port` **globally**, not just for the individual command.
+
 #### Using config arguments
 
 Modifying the script to read
@@ -120,8 +128,38 @@ This is perhaps a bit cumbersome, but it works.
 
 Furthermore, if the user wishes to consistently use a particular port different to the one you specified, they may simply modify the value in `package.json`.
 
-NB: The documentation for `npm config` asserts that running `npm set (packagename):port 5000` will change the value of `$npm_package_config_port` to `5000`, automatically modifying `package.json`.
+**NB**: The documentation for `npm config` asserts that running `npm set (packagename):port 5000` will change the value of `$npm_package_config_port` to `5000`, automatically modifying `package.json`.
 However, I tried this on my machine and it just... didn't do that. So, if this works for you, then that's great, and will probably make your life easier. However, it ain't working for me.
+
+#### A not so elegant combination
+
+So, say that you want to have a default value for `port` (let's say `8080`), but also want to be able to change it using `--port=5000` on occasion.
+Using `--(packagename):port=5000` does work, but it's clunky and cumbersome to have to prepend the package name every time.
+Here's a solution that uses bash logical conditions to give this behaviour:
+
+```
+dev: [ ! -z "$npm_config_port" ] && webpack-dev-server --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port
+```
+
+This does the following:
+
+1. Check if `$npm_config_port` is set (either this was called with `--port=` or `npm set config port` has been called
+2. If it is, runs `webpack-dev-server` on this port
+3. If it isn't, calls this function again with `$npm-config-port = $npm-package-config-port`.
+
+Thus, **as long as `$npm_config_port` hasn't been globally set**, calling
+
+```bash
+$ npm run dev
+```
+
+will run with the default port, and calling
+
+```bash
+$ npm run dev --port=5000
+```
+
+will run with port `5000`.
 
 ### npx and package binaries
 
@@ -144,29 +182,29 @@ $ npx jest #This will work, presuming jest is properly set up
 ## Installing packages
 
 Packages can be installed with
-```
-npm install {package_name}
+```bash
+$ npm install {package_name}
 ```
 and information about the installation will be automatically added into the `dependencies` section of the `package.json` file.
 
 If the package is a tool for development and not a package that will be included in the finalised JavaScript (e.g Babel, TypeScript, [Webpack](https://github.com/OneSlightWeirdo/npm-notes/blob/master/notes/webpack.md)), then you should instead install with
-```
-npm install {package_name} --save-dev
+```bash
+$ npm install {package_name} --save-dev
 ```
 
 Doing as such will instead add the package to the `devDependencies` section of the `package.json`.
 Then, if you later need to run the product but don't need any of the development tools, running
-```
-npm install --production
+```bash
+$ npm install --production
 ```
 installs from `package.json` but ignores everything in `devDependencies`.
 
 ## Uninstalling packages
 
 An easy (but potentially dangerous) trick to uninstall all installed packages before removing a directory is
-```
-cd node_modules
-npm uninstall *
+```bash
+$ cd node_modules
+$ npm uninstall *
 ```
 
 Be aware that, if you have a package both uninstalled globally and in the current package, this may uninstall it globally.
