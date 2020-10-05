@@ -110,7 +110,7 @@ However, what if you want to do away with the clunky necessity of prepending the
 Here's a solution that uses bash logical conditions to give this behaviour:
 
 ```
-    "dev": "[ ! -z "$npm_config_port" ] && webpack-dev-server --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
+    "dev": "[ ! -z \"$npm_config_port\" ] && webpack-dev-server --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
 ```
 
 This does the following:
