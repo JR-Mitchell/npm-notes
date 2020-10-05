@@ -34,7 +34,7 @@ There are a few ways of going about this.
 Imagine that we have the following script to launch a development server:
 
 ```
-dev: webpack-dev-server --mode development
+    "dev": "webpack-dev-server --mode development"
 ```
 
 and wish to be able to change the port it runs on.
@@ -70,7 +70,7 @@ webpack-dev-server --mode development (any arguments)
 Modifying the script to read
 
 ```
-dev: webpack-dev-server --mode development --port $npm_config_port
+    "dev": "webpack-dev-server --mode development --port $npm_config_port"
 ```
 
 allows one to specify the port by calling
@@ -107,7 +107,7 @@ $ npm set config port 5000
 Modifying the script to read
 
 ```
-dev: webpack-dev-server --mode development --port $npm_package_config_port
+    "dev": "webpack-dev-server --mode development --port $npm_package_config_port"
 ```
 
 and adding the line to `package.json`:
@@ -133,12 +133,12 @@ However, I tried this on my machine and it just... didn't do that. So, if this w
 
 #### A not so elegant combination
 
-So, say that you want to have a default value for `port` (let's say `8080`), but also want to be able to change it using `--port=5000` on occasion.
-Using `--(packagename):port=5000` does work, but it's clunky and cumbersome to have to prepend the package name every time.
+The above allows you to have a default value for `port`, but also to specify a different value using `--(packagename):port=`.
+However, what if you want to do away with the clunky necessity of prepending the package name every time you wish to use a different port?
 Here's a solution that uses bash logical conditions to give this behaviour:
 
 ```
-dev: [ ! -z "$npm_config_port" ] && webpack-dev-server --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port
+    "dev": "[ ! -z "$npm_config_port" ] && webpack-dev-server --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
 ```
 
 This does the following:
