@@ -1,28 +1,31 @@
 {
   "name": "babel-ts-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "babel with webpack and typescript demo files for npm-notes",
   "main": "index.js",
+  "config": {
+    "port": "8080"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No test specified yet. Check out later info on jest.\" && exit 1",
     "build:pack": "webpack --config wp.config.js",
-    "dev:server": "webpack-dev-server --config wp.config.js --mode development"
+    "dev:server": "[ ! -z \"$npm_config_port\" ] && webpack-dev-server --config wp.config.js --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OneSlightWeirdo/npm-notes.git"
+    "url": "git+https://github.com/JR-Mitchell/npm-notes.git"
   },
   "keywords": [
     "webpack",
     "babel",
     "typescript"
   ],
-  "author": "OneSlightWeirdo",
+  "author": "JR-Mitchell",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/OneSlightWeirdo/npm-notes/issues"
+    "url": "https://github.com/JR-Mitchell/npm-notes/issues"
   },
-  "homepage": "https://github.com/OneSlightWeirdo/npm-notes#readme",
+  "homepage": "https://github.com/JR-Mitchell/npm-notes#readme",
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",

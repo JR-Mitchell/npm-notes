@@ -2,15 +2,19 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 const WebpackConfig = {
-    entry: "./src/ts/index.ts",
     plugins: [
         new HTMLWebpackPlugin({
-            template: "src/html/index.html",
+            template: "src/index.html",
             filename: "index.html"
         })
     ],
     module: {
         rules: [
+            {
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader']
+            },
             {
                 test: /\.(ts)$/,
                 exclude: /node_modules/,
