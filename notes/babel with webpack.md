@@ -67,3 +67,6 @@ Now, in `.babelrc` simply add the entry `plugins` with the required plugin:
     ]
 ```
 Now, we may "?." to our hearts desire.
+
+## Next, check out my notes about [adding React into the mix](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/react%20with%20babel.md)
+## Or, if you'd rather, read about [TypeScript](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/typescript%20with%20babel.md)

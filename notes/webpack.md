@@ -92,3 +92,5 @@ With this in place, we need only add the npm script:
 ```
 and then run it, and a server will spawn at localhost:8080 which will automatically update whenever the source code is modified.
 See [npm scripts and arguments](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/npm%20arguments.md) for an in-detail on command arguments using this script as an example.
+
+## Next, check out my notes on [getting Babel working with webpack](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/babel%20with%20webpack.md)

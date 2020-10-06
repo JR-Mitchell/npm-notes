@@ -78,3 +78,7 @@ In order to inform webpack that it should look for `.ts` files, the following mu
 Many external packages/modules will not come pre-shipped with type declarations for their code.
 In this case, the loader will throw an error telling you to install the relevant `@types/` package.
 Simply run `npm install --save-dev @types/(package name)`, and the loader will now have access to all the relevant type declarations.
+
+## If you've already read my notes on React, you're ready to read about combining TypeScript with React (TODO)
+
+## If you haven't, learn about React [here](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/react%20with%20babel.md)

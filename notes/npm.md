@@ -81,3 +81,5 @@ $ npm uninstall *
 
 Be aware that, if you have a package both uninstalled globally and in the current package, this may uninstall it globally.
 However, in most situations this should not be the case.
+
+## Next, check out my notes on [webpack](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/webpack.md)
