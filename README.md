@@ -26,7 +26,7 @@ A few of these have associated demo folders:
 - React + TypeScript (TODO)
 - Jest (TODO)
 
-Also, [here's](https://github.com/JR-Mitchell/npm-notes/tree/master/notes) an odd digression in which I attempt to pass optional arguments to npm scripts in a way that feels aesthetically pleasing to me.
+Also, [here's](https://github.com/JR-Mitchell/npm-notes/tree/master/notes/npm%20arguments.md) an odd digression in which I attempt to pass optional arguments to npm scripts in a way that feels aesthetically pleasing to me.
 
 
 I hope this is useful to anyone reading it.
