@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"No test specified yet. Check out later info on jest.\" && exit 1",
     "build": "webpack --config wp.config.js",
-    "dev": "[ ! -z \"npm_config_port\" ] && webpack-dev-server --config wp.config.js --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
+    "dev": "if [ ! -z \"npm_config_port\" ]; then webpack-dev-server --config wp.config.js --mode development --port $npm_config_port; else npm run dev --port=$npm_package_config_port; fi"
   },
   "repository": {
     "type": "git",
