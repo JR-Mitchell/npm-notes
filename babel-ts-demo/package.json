@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"No test specified yet. Check out later info on jest.\" && exit 1",
-    "build:pack": "webpack --config wp.config.js",
-    "dev:server": "[ ! -z \"$npm_config_port\" ] && webpack-dev-server --config wp.config.js --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
+    "build": "webpack --config wp.config.js",
+    "dev": "[ ! -z \"$npm_config_port\" ] && webpack-dev-server --config wp.config.js --mode development --port $npm_config_port || npm run dev --port=$npm_package_config_port"
   },
   "repository": {
     "type": "git",

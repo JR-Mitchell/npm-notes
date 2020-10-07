@@ -2,6 +2,7 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 const WebpackConfig = {
+    entry: "./src/index.ts",
     plugins: [
         new HTMLWebpackPlugin({
             template: "src/index.html",

@@ -25,10 +25,11 @@ $ npm install typescript ts-loader --save-dev
 ```
 
 Now, to get `ts-loader` working with babel, we wish to first convert all `.ts` files with this loader, and then take the output and push it through Babel.
-In our Webpack Config file, we add another rule:
+In our Webpack Config file, we change the entrypoint to our `.ts` file, and add another rule:
 
 ```js
-    entry: "./src/ts/index.ts",
+-   entry: "./src/index.js",
++   entry: "./src/index.ts",
     ...
     module: {
         rules: [
