@@ -105,9 +105,9 @@ With this on, the boilerplate tsconfig reads:
 
 ```json
 {
-+   "compilerOptions": {
-+       "esModuleInterop": true,
-+       "jsx": "react"
-+   }
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "jsx": "react"
+    }
 }
 ```

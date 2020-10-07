@@ -81,6 +81,6 @@ In order to do so, we edit the entry for `rules` in the webpack config:
 
 Here, we add `x?`, which is the RegEx code for zero or one 'x' characters, meaning that webpack will use this rule to process both files ending `.js` and files ending `.jsx`.
 
-## If you've already read my notes on TypeScript, you're ready to read about combining TypeScript with React (TODO)
+## If you've already read my notes on TypeScript, you're ready to read about [combining TypeScript with React](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/react%20and%20typescript.md)
 
 ## If you haven't, learn about TypeScript [here](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/typescript%20with%20babel.md)
