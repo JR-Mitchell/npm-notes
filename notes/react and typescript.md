@@ -86,28 +86,13 @@ In order to remedy this, we modify our `tsconfig.json` to include the `jsx` comp
 ```json
 {
 +   "compilerOptions": {
-+       "jsx": ???
++       "esModuleInterop": true,
++       "jsx": "react"
 +   }
 }
 ```
 
-I have left question marks there as I wish to explore the values available for this option.
-In the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/jsx.html), the three values this can take (`"preserve"`, `"react"` and `"react-native"`) are described, with information about the use cases.
-Naively, you might think that the value we should use is `"react"`.
-If you checked out the handbook, you might wisely suggest that the value we should use is `"preserve"`, as we wish to then pass it through Babel.
-However, I work on the principle that whatever works, works.
-I have had variable success with these options, often finding errors saying that React isn't imported in browser.
-In asteroid-js, I have this option set to `"react-native"`.
-In the boilerplate associated with these notes, it only worked with `"react"`.
-However, whatever you can get to work, a key part of making it work is adding the tag `esModuleInterop`, which enables runtime Babel intercompatibility.
-
-With this on, the boilerplate tsconfig reads:
-
-```json
-{
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "jsx": "react"
-    }
-}
-```
+Note that we have also added the `esModuleInterop` tag, which enables runtime Babel intercompatibility.
+Information about the `jsx` tag can be found in the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/jsx.html).
+However, note that this recommends the value `"preserve"` rather than `"react"` if you are using Babel; however I have been unable to get the boilerplate working with this value.
+If it ain't broke, don't fix it!
