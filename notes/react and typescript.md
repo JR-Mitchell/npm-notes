@@ -96,3 +96,5 @@ Note that we have also added the `esModuleInterop` tag, which enables runtime Ba
 Information about the `jsx` tag can be found in the [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/jsx.html).
 However, note that this recommends the value `"preserve"` rather than `"react"` if you are using Babel; however I have been unable to get the boilerplate working with this value.
 If it ain't broke, don't fix it!
+
+## Next, check out my notes on [unit testing with Jest](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/jest.md)

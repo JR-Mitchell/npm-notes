@@ -15,7 +15,7 @@ That being said, if you plan on going through in a vaguely linear fashion, follo
 4. [React](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/react%20with%20babel.md)
 5. [TypeScript](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/typescript%20with%20babel.md)
 6. [React + TypeScript](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/react%20and%20typescript.md)
-7. Jest (still to type up)
+7. [Jest](https://github.com/JR-Mitchell/npm-notes/blob/master/notes/jest.md)
 
 A few of these have associated demo folders:
 
@@ -24,7 +24,7 @@ A few of these have associated demo folders:
 - [React](https://github.com/JR-Mitchell/npm-notes/tree/master/babel-react-demo)
 - [TypeScript](https://github.com/JR-Mitchell/npm-notes/tree/master/babel-ts-demo)
 - [React + TypeScript](https://github.com/JR-Mitchell/npm-notes/tree/master/react-ts-demo)
-- Jest (TODO)
+- [Jest](https://github.com/JR-Mitchell/npm-notes/tree/master/jest-demo)
 
 Also, [here's](https://github.com/JR-Mitchell/npm-notes/tree/master/notes/npm%20arguments.md) an odd digression in which I attempt to pass optional arguments to npm scripts in a way that feels aesthetically pleasing to me.
 
