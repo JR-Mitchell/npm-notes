@@ -39,7 +39,7 @@ test("simplest possible test", () => {
 Now, simply run 
 
 ```bash
-$ npm run jest
+$ npm run test
 ```
 
 and you will see that all tests passed.
@@ -77,3 +77,91 @@ Thus, we add the following to our tsconfig:
 ```
 
 telling the TypeScript loader to ignore all files found in the test directory.
+
+
+## Snapshot testing React elements
+
+Snapshot testing involves creating the DOM tree for a particular element, optionally calling events/functions of that element, and then checking the tree against a previously generated tree.
+
+### Setting up
+
+```bash
+$ npm install --save-dev react-test-renderer
+```
+
+Consider we wish to test the basic `<App>` element found in previous boilerplates, which simply displays "Hello World!".
+In the test folder, we would create an `App.test.tsx` file, containing:
+
+```js
+import React from 'react';
+import renderer from 'react-test-renderer';
+import App from '../src/App';
+
+test("App snapshot", () => {
+    const tree = renderer
+        .create(<App />)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
+})
+```
+
+What this does is:
+
+- Create a test render of the React `<App>` component
+- Convert the DOM tree for this render to a JSON format
+- Compare this rendered tree to the saved snapshot, or save a snapshot if none exists
+
+### Getting Jest to work again
+
+Now, calling
+
+```bash
+$ npm run test
+```
+
+will throw an error. Jest doesn't recognise ES6 style imports like `import React from 'react'`!
+Also, we can't simply change the type of import, as it will also fail to interpret these imports from any imported file in the `src` folder.
+
+Why does this happen?
+Simply, we have set up webpack to process our files with TypeScript and with Babel, but Jest doesn't know to do the same.
+Thus, we install the equivalent to ts-loader and babel-loader for Jest:
+
+```bash
+$ npm install --save-dev babel-jest ts-jest
+```
+
+and then create a new file jest.config.js telling Jest how to use these modules:
+
+```js
+const JestConfig = {
+    "transform": {
+        "^.+\\.jsx?$": "babel-jest",
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+        "js",
+        "jsx",
+        "tsx",
+        "ts",
+        "node"
+    ]
+};
+
+module.exports = JestConfig;
+```
+Now, calling
+
+```bash
+$ npm run test
+```
+
+Will pass both tests, and create a snapshot for our `<App>` component.
+This snapshot can be found [here](https://github.com/JR-Mitchell/npm-notes/blob/master/jest-demo/test/__snapshots__/App.test.tsx.snap).
+I recommend you take a look to see how simple this is.
+
+If you were to then modify the `src/App.tsx` file, say, to change the text to "Yo, universe", running Jest would fail the test, as the snapshot would not match the rendered tree.
+If the change to code was intended to change the element like this, you could update the snapshot with
+
+```bash
+$ npm run test -- -u
+```
