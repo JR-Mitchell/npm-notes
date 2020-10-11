@@ -9,7 +9,7 @@ It handles state and responsiveness, so that you don't have to think too hard ab
 
 ```bash
 $ npm install react react-dom
-$ npm install --save-dev @babel/preset-react
+$ npm install --save-dev @babel/preset-react @types/react @types/react-dom
 ```
 
 Now, as you may expect, we wish to go into our .babelrc and replace the preset with this react preset:
