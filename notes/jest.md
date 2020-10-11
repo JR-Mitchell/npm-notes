@@ -134,11 +134,11 @@ and then create a new file jest.config.js telling Jest how to use these modules:
 
 ```js
 const JestConfig = {
-    "transform": {
+    transform: {
         "^.+\\.jsx?$": "babel-jest",
         "^.+\\.tsx?$": "ts-jest"
     },
-    "moduleFileExtensions": [
+    moduleFileExtensions: [
         "js",
         "jsx",
         "tsx",
@@ -165,3 +165,84 @@ If the change to code was intended to change the element like this, you could up
 ```bash
 $ npm run test -- -u
 ```
+## Using snapshot testing for updating elements
+
+For this section, we will be testing the React element defined in [`Button.tsx`](https://github.com/JR-Mitchell/npm-notes/blob/master/jest-demo/src/Button.tsx).
+This element has a button, and when pressed, counts down from 3 and then displays the text "Successfully waited!".
+
+### onClick event
+
+Now, consider we wish to test the behaviour of this element.
+In the test folder, we would create a `Button.test.tsx` file, with everything found in the App test file:
+
+```js
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Button from '../src/Button';
+
+test("Button snapshot", () => {
+    const tree = renderer
+        .create(<Button />)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
+})
+```
+
+This tests the initial render, but does nothing to test the behaviour when the button is clicked!
+We know for this element that the button element will always be the first child.
+Thus, we add a click to the button with:
+
+```js
+    tree.children[0].props.onClick();
+```
+
+Then, we want to re-render the tree after this click event.
+However, we have no access to the initially rendered object.
+Thus, we refactor:
+
+```js
+test("Button snapshot", () => {
+    const button = renderer.create(<Button />);
+    let tree = button.toJSON();
+    expect(tree).toMatchSnapshot("initial");
+    //Click the button
+    tree.children[0].props.onClick();
+    //Re-render the tree
+    tree = button.toJSON();
+    //Match new snapshot
+    expect(tree).toMatchSnapshot("afterClick");
+})
+```
+### Using jest timer functions
+
+If we now inspect the created snapshot, we will see that the "afterClick" snapshot is at the point where the text says "Waiting for 3 seconds...".
+This tells us something: the test is not capturing the full behaviour of the element, due to the `setTimeout` function being called.
+Usefully, Jest provides some tools to deal with timeouts.
+
+If we add the line
+
+```js
+    jest.useFakeTimers();
+```
+
+at the start of the test, it allows us to utilise some of Jest's timer tools.
+Now, calling `jest.runTimers()` will run timers until none remain.
+Alternatively, if we want to be more rigorous, we can use `jest.runOnlyPendingTimers()` to snapshot a step at a time.
+
+```js
+test("Button snapshot", () => {
+    const button = renderer.create(<Button />);
+    let tree = button.toJSON();
+    expect(tree).toMatchSnapshot("initial");
+    do {
+        //Re-render the tree
+        tree = button.toJSON();
+        //Match new snapshot
+        expect(tree).toMatchSnapshot("afterClick");
+        //Run only currently set timers
+        jest.runOnlyPendingTimers();
+    } while(jest.getTimerCount() != 0);
+})
+```
+
+

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button snapshot: afterClick 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Click here!
+  </button>
+  <p>
+    Waiting for 3 seconds...
+  </p>
+</div>
+`;
+
+exports[`Button snapshot: afterClick 2`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Click here!
+  </button>
+  <p>
+    Waiting for 2 seconds...
+  </p>
+</div>
+`;
+
+exports[`Button snapshot: afterClick 3`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Click here!
+  </button>
+  <p>
+    Waiting for 1 seconds...
+  </p>
+</div>
+`;
+
+exports[`Button snapshot: afterClick 4`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Click here!
+  </button>
+  <p>
+    Successfully waited!
+  </p>
+</div>
+`;
+
+exports[`Button snapshot: initial 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Click here!
+  </button>
+  <p>
+    
+  </p>
+</div>
+`;

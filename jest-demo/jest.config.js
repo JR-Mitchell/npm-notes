@@ -1,9 +1,9 @@
 const JestConfig = {
-    "transform": {
+    transform: {
         "^.+\\.jsx?$": "babel-jest",
         "^.+\\.tsx?$": "ts-jest"
     },
-    "moduleFileExtensions": [
+    moduleFileExtensions: [
         "js",
         "jsx",
         "tsx",
