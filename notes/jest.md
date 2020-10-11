@@ -231,6 +231,7 @@ Alternatively, if we want to be more rigorous, we can use `jest.runOnlyPendingTi
 
 ```js
 test("Button snapshot", () => {
+    jest.useFakeTimers();
     const button = renderer.create(<Button />);
     let tree = button.toJSON();
     expect(tree).toMatchSnapshot("initial");
